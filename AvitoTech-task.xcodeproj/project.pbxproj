@@ -11,13 +11,17 @@
 		B18783B125C30C9C00C4C978 /* NetworkWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18783B025C30C9C00C4C978 /* NetworkWorker.swift */; };
 		B1885BAC25C2D3D1000A0449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1885BAB25C2D3D1000A0449 /* AppDelegate.swift */; };
 		B1885BAE25C2D3D1000A0449 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1885BAD25C2D3D1000A0449 /* SceneDelegate.swift */; };
-		B1885BB025C2D3D1000A0449 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1885BAF25C2D3D1000A0449 /* ViewController.swift */; };
 		B1885BB325C2D3D2000A0449 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1885BB125C2D3D2000A0449 /* Main.storyboard */; };
 		B1885BB525C2D3DE000A0449 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1885BB425C2D3DE000A0449 /* Assets.xcassets */; };
 		B1885BB825C2D3DE000A0449 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1885BB625C2D3DE000A0449 /* LaunchScreen.storyboard */; };
 		B1885BC625C2D86C000A0449 /* AdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1885BC425C2D86C000A0449 /* AdCell.swift */; };
 		B1885BC725C2D86C000A0449 /* AdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1885BC525C2D86C000A0449 /* AdCell.xib */; };
 		B1885BCC25C2E714000A0449 /* Advertising.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1885BCB25C2E714000A0449 /* Advertising.swift */; };
+		B1ECBCBE25CC6AE4003F0C89 /* AdvertisingScreenContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ECBCB925CC6AE4003F0C89 /* AdvertisingScreenContract.swift */; };
+		B1ECBCBF25CC6AE4003F0C89 /* AdvertisingScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ECBCBA25CC6AE4003F0C89 /* AdvertisingScreenPresenter.swift */; };
+		B1ECBCC025CC6AE4003F0C89 /* AdvertisingScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ECBCBB25CC6AE4003F0C89 /* AdvertisingScreenRouter.swift */; };
+		B1ECBCC125CC6AE4003F0C89 /* AdvertisingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ECBCBC25CC6AE4003F0C89 /* AdvertisingScreenViewController.swift */; };
+		B1ECBCC225CC6AE4003F0C89 /* AdvertisingScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ECBCBD25CC6AE4003F0C89 /* AdvertisingScreenInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +30,6 @@
 		B1885BA825C2D3D1000A0449 /* AvitoTech-task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AvitoTech-task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1885BAB25C2D3D1000A0449 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1885BAD25C2D3D1000A0449 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B1885BAF25C2D3D1000A0449 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B1885BB225C2D3D2000A0449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B1885BB425C2D3DE000A0449 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1885BB725C2D3DE000A0449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -34,6 +37,11 @@
 		B1885BC425C2D86C000A0449 /* AdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdCell.swift; sourceTree = "<group>"; };
 		B1885BC525C2D86C000A0449 /* AdCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdCell.xib; sourceTree = "<group>"; };
 		B1885BCB25C2E714000A0449 /* Advertising.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertising.swift; sourceTree = "<group>"; };
+		B1ECBCB925CC6AE4003F0C89 /* AdvertisingScreenContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingScreenContract.swift; sourceTree = "<group>"; };
+		B1ECBCBA25CC6AE4003F0C89 /* AdvertisingScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingScreenPresenter.swift; sourceTree = "<group>"; };
+		B1ECBCBB25CC6AE4003F0C89 /* AdvertisingScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingScreenRouter.swift; sourceTree = "<group>"; };
+		B1ECBCBC25CC6AE4003F0C89 /* AdvertisingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingScreenViewController.swift; sourceTree = "<group>"; };
+		B1ECBCBD25CC6AE4003F0C89 /* AdvertisingScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingScreenInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,9 +78,8 @@
 				B1885BAD25C2D3D1000A0449 /* SceneDelegate.swift */,
 				B18783AD25C30C4F00C4C978 /* UIImageLoadingExtension.swift */,
 				B18783B025C30C9C00C4C978 /* NetworkWorker.swift */,
+				B1ECBCC525CC6DA6003F0C89 /* Modules */,
 				B1885BCF25C2E720000A0449 /* Model */,
-				B1885BAF25C2D3D1000A0449 /* ViewController.swift */,
-				B1885BC925C2E287000A0449 /* Cell */,
 				B1885BB125C2D3D2000A0449 /* Main.storyboard */,
 				B1885BB425C2D3DE000A0449 /* Assets.xcassets */,
 				B1885BB625C2D3DE000A0449 /* LaunchScreen.storyboard */,
@@ -96,6 +103,27 @@
 				B1885BCB25C2E714000A0449 /* Advertising.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B1ECBCB825CC6AA6003F0C89 /* Advertising */ = {
+			isa = PBXGroup;
+			children = (
+				B1885BC925C2E287000A0449 /* Cell */,
+				B1ECBCB925CC6AE4003F0C89 /* AdvertisingScreenContract.swift */,
+				B1ECBCBD25CC6AE4003F0C89 /* AdvertisingScreenInteractor.swift */,
+				B1ECBCBA25CC6AE4003F0C89 /* AdvertisingScreenPresenter.swift */,
+				B1ECBCBC25CC6AE4003F0C89 /* AdvertisingScreenViewController.swift */,
+				B1ECBCBB25CC6AE4003F0C89 /* AdvertisingScreenRouter.swift */,
+			);
+			path = Advertising;
+			sourceTree = "<group>";
+		};
+		B1ECBCC525CC6DA6003F0C89 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				B1ECBCB825CC6AA6003F0C89 /* Advertising */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,13 +197,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1885BB025C2D3D1000A0449 /* ViewController.swift in Sources */,
+				B1ECBCBE25CC6AE4003F0C89 /* AdvertisingScreenContract.swift in Sources */,
+				B1ECBCC225CC6AE4003F0C89 /* AdvertisingScreenInteractor.swift in Sources */,
 				B1885BAC25C2D3D1000A0449 /* AppDelegate.swift in Sources */,
 				B1885BCC25C2E714000A0449 /* Advertising.swift in Sources */,
+				B1ECBCBF25CC6AE4003F0C89 /* AdvertisingScreenPresenter.swift in Sources */,
 				B1885BAE25C2D3D1000A0449 /* SceneDelegate.swift in Sources */,
 				B18783B125C30C9C00C4C978 /* NetworkWorker.swift in Sources */,
+				B1ECBCC025CC6AE4003F0C89 /* AdvertisingScreenRouter.swift in Sources */,
 				B18783AE25C30C4F00C4C978 /* UIImageLoadingExtension.swift in Sources */,
 				B1885BC625C2D86C000A0449 /* AdCell.swift in Sources */,
+				B1ECBCC125CC6AE4003F0C89 /* AdvertisingScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
