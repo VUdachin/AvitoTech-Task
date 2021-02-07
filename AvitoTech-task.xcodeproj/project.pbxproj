@@ -11,7 +11,6 @@
 		B18783B125C30C9C00C4C978 /* NetworkWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18783B025C30C9C00C4C978 /* NetworkWorker.swift */; };
 		B1885BAC25C2D3D1000A0449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1885BAB25C2D3D1000A0449 /* AppDelegate.swift */; };
 		B1885BAE25C2D3D1000A0449 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1885BAD25C2D3D1000A0449 /* SceneDelegate.swift */; };
-		B1885BB325C2D3D2000A0449 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1885BB125C2D3D2000A0449 /* Main.storyboard */; };
 		B1885BB525C2D3DE000A0449 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1885BB425C2D3DE000A0449 /* Assets.xcassets */; };
 		B1885BB825C2D3DE000A0449 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1885BB625C2D3DE000A0449 /* LaunchScreen.storyboard */; };
 		B1885BC625C2D86C000A0449 /* AdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1885BC425C2D86C000A0449 /* AdCell.swift */; };
@@ -30,7 +29,6 @@
 		B1885BA825C2D3D1000A0449 /* AvitoTech-task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AvitoTech-task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1885BAB25C2D3D1000A0449 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1885BAD25C2D3D1000A0449 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B1885BB225C2D3D2000A0449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B1885BB425C2D3DE000A0449 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1885BB725C2D3DE000A0449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1885BB925C2D3DE000A0449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 				B18783B025C30C9C00C4C978 /* NetworkWorker.swift */,
 				B1ECBCC525CC6DA6003F0C89 /* Modules */,
 				B1885BCF25C2E720000A0449 /* Model */,
-				B1885BB125C2D3D2000A0449 /* Main.storyboard */,
 				B1885BB425C2D3DE000A0449 /* Assets.xcassets */,
 				B1885BB625C2D3DE000A0449 /* LaunchScreen.storyboard */,
 				B1885BB925C2D3DE000A0449 /* Info.plist */,
@@ -185,7 +182,6 @@
 			files = (
 				B1885BB825C2D3DE000A0449 /* LaunchScreen.storyboard in Resources */,
 				B1885BB525C2D3DE000A0449 /* Assets.xcassets in Resources */,
-				B1885BB325C2D3D2000A0449 /* Main.storyboard in Resources */,
 				B1885BC725C2D86C000A0449 /* AdCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,14 +210,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B1885BB125C2D3D2000A0449 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B1885BB225C2D3D2000A0449 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B1885BB625C2D3DE000A0449 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

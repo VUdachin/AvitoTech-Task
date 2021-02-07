@@ -13,43 +13,52 @@ class AdvertisingScreenViewController: UIViewController {
     // MARK: - Public Properties
     var presenter: ViewToPresenterAdvertisingScreenProtocol?
     
-    lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView()
-        collectionView.register(UINib(nibName: "AdCell", bundle: nil), forCellWithReuseIdentifier: "AdCell")
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
-        view.addSubview(collectionView)
-        
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.heightAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
-        collectionView.widthAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
-        
-        return collectionView
-    }()
+    var collectionView = UICollectionView()
     
     
     var lastSelected: Bool?
     var selected: Bool?
     
     // MARK: - Private Properties
-    let banners: [Banner] = []
+    private var banners: [Banner] = []
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         
     }
 
 
     // MARK: - Private Methods
-
+    func setupCollectionView() {
+        self.view.addSubview(collectionView)
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.headerReferenceSize = CGSize(width: (UIScreen.main.bounds.size.width - 20), height: 120)
+        
+    }
+    
+    
+    
+    
     
     // MARK: - UI Actions
     
 }
 
 extension AdvertisingScreenViewController: PresenterToViewAdvertisingScreenProtocol{
+    func onFetchAdvertisingSuccess(banner: AdvertisingModel) {
+        banners = banner.list
+        collectionView.reloadData()
+    }
+    
+    func onFetchAdvertisingFailure(error: String) {
+        print(error)
+    }
+    
     // TODO: Implement View Output Methods
 }
 

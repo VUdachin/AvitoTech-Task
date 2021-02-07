@@ -11,11 +11,17 @@ import Foundation
 class AdvertisingScreenPresenter: ViewToPresenterAdvertisingScreenProtocol {
 
     // MARK: Properties
-    var view: PresenterToViewAdvertisingScreenProtocol?
+    weak var view: PresenterToViewAdvertisingScreenProtocol?
     var interactor: PresenterToInteractorAdvertisingScreenProtocol?
     var router: PresenterToRouterAdvertisingScreenProtocol?
 }
 
 extension AdvertisingScreenPresenter: InteractorToPresenterAdvertisingScreenProtocol {
+    func fetchAdvertisingSuccess(ad: AdvertisingModel) {
+        view?.onFetchAdvertisingSuccess(banner: ad)
+    }
     
+    func fetchAdvertisingFailure(err: String) {
+        view?.onFetchAdvertisingFailure(error: err)
+    }
 }

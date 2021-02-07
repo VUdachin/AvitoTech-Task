@@ -10,8 +10,9 @@ import Foundation
 
 
 // MARK: View Output (Presenter -> View)
-protocol PresenterToViewAdvertisingScreenProtocol {
-   
+protocol PresenterToViewAdvertisingScreenProtocol: class {
+    func onFetchAdvertisingSuccess(banner: AdvertisingModel)
+    func onFetchAdvertisingFailure(error: String)
 }
 
 
@@ -33,7 +34,8 @@ protocol PresenterToInteractorAdvertisingScreenProtocol {
 
 // MARK: Interactor Output (Interactor -> Presenter)
 protocol InteractorToPresenterAdvertisingScreenProtocol {
-    
+    func fetchAdvertisingSuccess(ad: AdvertisingModel)
+    func fetchAdvertisingFailure(err: String)
 }
 
 
