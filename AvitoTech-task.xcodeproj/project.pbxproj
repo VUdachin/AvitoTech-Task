@@ -16,6 +16,7 @@
 		B1885BC625C2D86C000A0449 /* AdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1885BC425C2D86C000A0449 /* AdCell.swift */; };
 		B1885BC725C2D86C000A0449 /* AdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1885BC525C2D86C000A0449 /* AdCell.xib */; };
 		B1885BCC25C2E714000A0449 /* Advertising.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1885BCB25C2E714000A0449 /* Advertising.swift */; };
+		B1AEFABB25D3BAC100C81630 /* AdvertisingScreenConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AEFABA25D3BAC100C81630 /* AdvertisingScreenConfigurator.swift */; };
 		B1ECBCBE25CC6AE4003F0C89 /* AdvertisingScreenContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ECBCB925CC6AE4003F0C89 /* AdvertisingScreenContract.swift */; };
 		B1ECBCBF25CC6AE4003F0C89 /* AdvertisingScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ECBCBA25CC6AE4003F0C89 /* AdvertisingScreenPresenter.swift */; };
 		B1ECBCC025CC6AE4003F0C89 /* AdvertisingScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ECBCBB25CC6AE4003F0C89 /* AdvertisingScreenRouter.swift */; };
@@ -35,6 +36,7 @@
 		B1885BC425C2D86C000A0449 /* AdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdCell.swift; sourceTree = "<group>"; };
 		B1885BC525C2D86C000A0449 /* AdCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdCell.xib; sourceTree = "<group>"; };
 		B1885BCB25C2E714000A0449 /* Advertising.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertising.swift; sourceTree = "<group>"; };
+		B1AEFABA25D3BAC100C81630 /* AdvertisingScreenConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingScreenConfigurator.swift; sourceTree = "<group>"; };
 		B1ECBCB925CC6AE4003F0C89 /* AdvertisingScreenContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingScreenContract.swift; sourceTree = "<group>"; };
 		B1ECBCBA25CC6AE4003F0C89 /* AdvertisingScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingScreenPresenter.swift; sourceTree = "<group>"; };
 		B1ECBCBB25CC6AE4003F0C89 /* AdvertisingScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingScreenRouter.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			children = (
 				B1885BC925C2E287000A0449 /* Cell */,
 				B1ECBCB925CC6AE4003F0C89 /* AdvertisingScreenContract.swift */,
+				B1AEFABA25D3BAC100C81630 /* AdvertisingScreenConfigurator.swift */,
 				B1ECBCBD25CC6AE4003F0C89 /* AdvertisingScreenInteractor.swift */,
 				B1ECBCBA25CC6AE4003F0C89 /* AdvertisingScreenPresenter.swift */,
 				B1ECBCBC25CC6AE4003F0C89 /* AdvertisingScreenViewController.swift */,
@@ -194,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1ECBCBE25CC6AE4003F0C89 /* AdvertisingScreenContract.swift in Sources */,
+				B1AEFABB25D3BAC100C81630 /* AdvertisingScreenConfigurator.swift in Sources */,
 				B1ECBCC225CC6AE4003F0C89 /* AdvertisingScreenInteractor.swift in Sources */,
 				B1885BAC25C2D3D1000A0449 /* AppDelegate.swift in Sources */,
 				B1885BCC25C2E714000A0449 /* Advertising.swift in Sources */,

@@ -8,15 +8,15 @@
 
 import Foundation
 
-class AdvertisingScreenPresenter: ViewToPresenterAdvertisingScreenProtocol {
+class AdvertisingScreenPresenter: ViewInputAdvertisingScreenProtocol {
 
     // MARK: Properties
-    weak var view: PresenterToViewAdvertisingScreenProtocol?
-    var interactor: PresenterToInteractorAdvertisingScreenProtocol?
+    weak var view: ViewOutputAdvertisingScreenProtocol?
+    var interactor: InteractorAdvertisingScreenProtocol?
     var router: PresenterToRouterAdvertisingScreenProtocol?
 }
 
-extension AdvertisingScreenPresenter: InteractorToPresenterAdvertisingScreenProtocol {
+extension AdvertisingScreenPresenter: PresenterAdvertisingScreenProtocol {
     func fetchAdvertisingSuccess(ad: AdvertisingModel) {
         view?.onFetchAdvertisingSuccess(banner: ad)
     }

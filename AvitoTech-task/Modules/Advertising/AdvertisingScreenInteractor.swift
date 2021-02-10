@@ -8,10 +8,10 @@
 
 import Foundation
 
-class AdvertisingScreenInteractor: PresenterToInteractorAdvertisingScreenProtocol {
+class AdvertisingScreenInteractor: InteractorAdvertisingScreenProtocol {
 
     // MARK: Properties
-    var presenter: InteractorToPresenterAdvertisingScreenProtocol?
+    var presenter: PresenterAdvertisingScreenProtocol?
     
     let url = URL(string: "https://github.com/avito-tech/internship/blob/main/result.json")
     

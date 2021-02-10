@@ -10,36 +10,46 @@ import Foundation
 
 
 // MARK: View Output (Presenter -> View)
-protocol PresenterToViewAdvertisingScreenProtocol: class {
+protocol ViewOutputAdvertisingScreenProtocol: class {
     func onFetchAdvertisingSuccess(banner: AdvertisingModel)
     func onFetchAdvertisingFailure(error: String)
 }
 
 
 // MARK: View Input (View -> Presenter)
-protocol ViewToPresenterAdvertisingScreenProtocol {
+protocol ViewInputAdvertisingScreenProtocol: class {
     
-    var view: PresenterToViewAdvertisingScreenProtocol? { get set }
-    var interactor: PresenterToInteractorAdvertisingScreenProtocol? { get set }
+    var view: ViewOutputAdvertisingScreenProtocol? { get set }
+    var interactor: InteractorAdvertisingScreenProtocol? { get set }
     var router: PresenterToRouterAdvertisingScreenProtocol? { get set }
 }
 
 
 // MARK: Interactor Input (Presenter -> Interactor)
-protocol PresenterToInteractorAdvertisingScreenProtocol {
+protocol InteractorAdvertisingScreenProtocol: class {
     
-    var presenter: InteractorToPresenterAdvertisingScreenProtocol? { get set }
+    var presenter: PresenterAdvertisingScreenProtocol? { get set }
 }
 
 
 // MARK: Interactor Output (Interactor -> Presenter)
-protocol InteractorToPresenterAdvertisingScreenProtocol {
+protocol PresenterAdvertisingScreenProtocol: class {
     func fetchAdvertisingSuccess(ad: AdvertisingModel)
     func fetchAdvertisingFailure(err: String)
 }
 
 
 // MARK: Router Input (Presenter -> Router)
-protocol PresenterToRouterAdvertisingScreenProtocol {
+protocol PresenterToRouterAdvertisingScreenProtocol: class {
     
+}
+
+protocol AdvertisingScreenConfiguratorProtocol: class {
+    func configure(with viewController: AdvertisingScreenViewController)
+}
+
+
+protocol AdvertisingScreenRouterProtocol: class {
+    func closeCurrentViewController()
+    func nextViewController()
 }
