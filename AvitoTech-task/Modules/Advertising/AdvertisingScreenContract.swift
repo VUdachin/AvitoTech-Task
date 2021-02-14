@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 // MARK: View Output (Presenter -> View)
@@ -18,17 +19,17 @@ protocol ViewOutputAdvertisingScreenProtocol: class {
 
 // MARK: View Input (View -> Presenter)
 protocol ViewInputAdvertisingScreenProtocol: class {
-    
     var view: ViewOutputAdvertisingScreenProtocol? { get set }
     var interactor: InteractorAdvertisingScreenProtocol? { get set }
-    var router: PresenterToRouterAdvertisingScreenProtocol? { get set }
+    var router: RouterAdvertisingScreenProtocol? { get set }
+    func setupView()
 }
 
 
 // MARK: Interactor Input (Presenter -> Interactor)
 protocol InteractorAdvertisingScreenProtocol: class {
-    
     var presenter: PresenterAdvertisingScreenProtocol? { get set }
+    func fetchAdvertising()
 }
 
 
@@ -40,8 +41,8 @@ protocol PresenterAdvertisingScreenProtocol: class {
 
 
 // MARK: Router Input (Presenter -> Router)
-protocol PresenterToRouterAdvertisingScreenProtocol: class {
-    
+protocol RouterAdvertisingScreenProtocol: class {
+    static func createModule() -> UIViewController
 }
 
 protocol AdvertisingScreenConfiguratorProtocol: class {

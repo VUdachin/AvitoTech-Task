@@ -13,7 +13,7 @@ class AdvertisingScreenInteractor: InteractorAdvertisingScreenProtocol {
     // MARK: Properties
     var presenter: PresenterAdvertisingScreenProtocol?
     
-    let url = URL(string: "https://github.com/avito-tech/internship/blob/main/result.json")
+    let url = URL(string: "https://raw.githubusercontent.com/avito-tech/internship/main/result.json")
     
     
     func fetchAdvertising() {
@@ -27,7 +27,7 @@ class AdvertisingScreenInteractor: InteractorAdvertisingScreenProtocol {
                 self.presenter?.fetchAdvertisingSuccess(ad: adv.result)
             case .failure(let error):
                 self.presenter?.fetchAdvertisingFailure(err: error.localizedDescription)
-                print(error.localizedDescription)
+                print(error)
             }
         }
     }

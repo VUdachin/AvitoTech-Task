@@ -9,22 +9,20 @@
 import Foundation
 import UIKit
 
-class AdvertisingScreenRouter: PresenterToRouterAdvertisingScreenProtocol {
+class AdvertisingScreenRouter: RouterAdvertisingScreenProtocol {
     
-    // MARK: Static methods
-//    static func createModule() -> UIViewController {
-//
-//        let viewController = AdvertisingScreenViewController()
-//
-//        let presenter: ViewToPresenterAdvertisingScreenProtocol & InteractorToPresenterAdvertisingScreenProtocol = AdvertisingScreenPresenter()
-//
-//        viewController.presenter = presenter
-//        viewController.presenter?.router = AdvertisingScreenRouter()
-//        viewController.presenter?.view = viewController
-//        viewController.presenter?.interactor = AdvertisingScreenInteractor()
-//        viewController.presenter?.interactor?.presenter = presenter
-//
-//        return viewController
-//    }
+    static func createModule() -> UIViewController {
+
+        let viewController = AdvertisingScreenViewController()
+        let presenter: ViewInputAdvertisingScreenProtocol & PresenterAdvertisingScreenProtocol = AdvertisingScreenPresenter()
+        
+        viewController.presenter = presenter
+        viewController.presenter?.router = AdvertisingScreenRouter()
+        viewController.presenter?.view = viewController
+        viewController.presenter?.interactor = AdvertisingScreenInteractor()
+        viewController.presenter?.interactor?.presenter = presenter
+        
+        return viewController
+    }
     
 }
