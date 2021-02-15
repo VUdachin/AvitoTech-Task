@@ -46,7 +46,6 @@ class AdvertisingScreenViewController: UIViewController {
         collectionView.register(CodeCell.self, forCellWithReuseIdentifier: CodeCell.reuseIdentifier)
         self.view.addSubview(collectionView)
         
-        
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -80,7 +79,7 @@ extension AdvertisingScreenViewController: ViewOutputAdvertisingScreenProtocol {
     
 }
 
-extension AdvertisingScreenViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension AdvertisingScreenViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return banners.count
     }
@@ -96,6 +95,11 @@ extension AdvertisingScreenViewController: UICollectionViewDataSource, UICollect
 
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize()
+    }
+    
     
 //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AdCell", for: indexPath) as? AdCell else {

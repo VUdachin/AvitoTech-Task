@@ -85,13 +85,13 @@ class CodeCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
 
-            iconImageView.heightAnchor.constraint(equalToConstant: 30),
-            iconImageView.widthAnchor.constraint(equalToConstant: 30),
+            iconImageView.heightAnchor.constraint(equalToConstant: 52),
+            iconImageView.widthAnchor.constraint(equalToConstant: 52),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
             iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset),
             
-            checkmarkImageView.heightAnchor.constraint(equalToConstant: 10),
-            checkmarkImageView.widthAnchor.constraint(equalToConstant: 10),
+            checkmarkImageView.heightAnchor.constraint(equalToConstant: 20),
+            checkmarkImageView.widthAnchor.constraint(equalToConstant: 20),
             checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
             checkmarkImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset),
             
