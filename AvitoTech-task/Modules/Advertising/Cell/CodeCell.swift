@@ -30,7 +30,7 @@ class CodeCell: UICollectionViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
-        label.numberOfLines = .max
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -38,7 +38,7 @@ class CodeCell: UICollectionViewCell {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        label.numberOfLines = .max
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -107,8 +107,8 @@ class CodeCell: UICollectionViewCell {
             priceLabel.trailingAnchor.constraint(equalTo: checkmarkImageView.leadingAnchor, constant: -8),
             priceLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: inset),
             
-            contentView.bottomAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: inset)
-            
+            contentView.bottomAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: inset),
+            contentView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - inset)
         ])
     }
 

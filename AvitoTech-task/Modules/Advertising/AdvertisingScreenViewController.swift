@@ -25,7 +25,6 @@ class AdvertisingScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        //configurator.configure(with: self)
         setupCollectionView()
         presenter?.setupView()
     }
@@ -37,7 +36,8 @@ class AdvertisingScreenViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        layout.headerReferenceSize = CGSize(width: (UIScreen.main.bounds.size.width - 20), height: 120)
+        layout.estimatedItemSize = CGSize(width: UIScreen.main.bounds.width - 20, height: 10)
+        //layout.headerReferenceSize = CGSize(width: (UIScreen.main.bounds.size.width - 20), height: 120)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,9 +49,7 @@ class AdvertisingScreenViewController: UIViewController {
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        //collectionView.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 5).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 75, right: 0)
         collectionView.alwaysBounceVertical = true
         
         collectionView.delegate = self
@@ -95,11 +93,6 @@ extension AdvertisingScreenViewController: UICollectionViewDataSource, UICollect
 
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize()
-    }
-    
     
 //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AdCell", for: indexPath) as? AdCell else {
