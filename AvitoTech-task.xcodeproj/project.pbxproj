@@ -15,6 +15,7 @@
 		B1885BB525C2D3DE000A0449 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1885BB425C2D3DE000A0449 /* Assets.xcassets */; };
 		B1885BB825C2D3DE000A0449 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1885BB625C2D3DE000A0449 /* LaunchScreen.storyboard */; };
 		B1885BCC25C2E714000A0449 /* Advertising.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1885BCB25C2E714000A0449 /* Advertising.swift */; };
+		B1EC7DE825E04DB80076156A /* AdvertisingHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EC7DE725E04DB80076156A /* AdvertisingHeaderReusableView.swift */; };
 		B1ECBCBE25CC6AE4003F0C89 /* AdvertisingScreenContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ECBCB925CC6AE4003F0C89 /* AdvertisingScreenContract.swift */; };
 		B1ECBCBF25CC6AE4003F0C89 /* AdvertisingScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ECBCBA25CC6AE4003F0C89 /* AdvertisingScreenPresenter.swift */; };
 		B1ECBCC025CC6AE4003F0C89 /* AdvertisingScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ECBCBB25CC6AE4003F0C89 /* AdvertisingScreenRouter.swift */; };
@@ -33,6 +34,7 @@
 		B1885BB725C2D3DE000A0449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1885BB925C2D3DE000A0449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1885BCB25C2E714000A0449 /* Advertising.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertising.swift; sourceTree = "<group>"; };
+		B1EC7DE725E04DB80076156A /* AdvertisingHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingHeaderReusableView.swift; sourceTree = "<group>"; };
 		B1ECBCB925CC6AE4003F0C89 /* AdvertisingScreenContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingScreenContract.swift; sourceTree = "<group>"; };
 		B1ECBCBA25CC6AE4003F0C89 /* AdvertisingScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingScreenPresenter.swift; sourceTree = "<group>"; };
 		B1ECBCBB25CC6AE4003F0C89 /* AdvertisingScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingScreenRouter.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 		B1885BC925C2E287000A0449 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				B1EC7DE725E04DB80076156A /* AdvertisingHeaderReusableView.swift */,
 				B116D40325D84A310013EF38 /* CodeCell.swift */,
 			);
 			path = Cell;
@@ -198,6 +201,7 @@
 				B1885BAE25C2D3D1000A0449 /* SceneDelegate.swift in Sources */,
 				B18783B125C30C9C00C4C978 /* NetworkWorker.swift in Sources */,
 				B1ECBCC025CC6AE4003F0C89 /* AdvertisingScreenRouter.swift in Sources */,
+				B1EC7DE825E04DB80076156A /* AdvertisingHeaderReusableView.swift in Sources */,
 				B18783AE25C30C4F00C4C978 /* UIImageLoadingExtension.swift in Sources */,
 				B1ECBCC125CC6AE4003F0C89 /* AdvertisingScreenViewController.swift in Sources */,
 			);

@@ -19,7 +19,7 @@ class AdvertisingScreenViewController: UIViewController {
     var isSelected: Bool?
     
     // MARK: - Private Properties
-    private var banners: [Banner] = []
+    private var banners: AdvertisingModel?
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -37,13 +37,14 @@ class AdvertisingScreenViewController: UIViewController {
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         layout.estimatedItemSize = CGSize(width: UIScreen.main.bounds.width - 20, height: 10)
-        //layout.headerReferenceSize = CGSize(width: (UIScreen.main.bounds.size.width - 20), height: 120)
+        layout.headerReferenceSize = CGSize(width: (UIScreen.main.bounds.size.width), height: 150)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .white
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(CodeCell.self, forCellWithReuseIdentifier: CodeCell.reuseIdentifier)
+        collectionView.register(AdvertisingHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: AdvertisingHeaderReusableView.reuseIdentifier)
         self.view.addSubview(collectionView)
         
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -65,7 +66,7 @@ extension AdvertisingScreenViewController: ViewOutputAdvertisingScreenProtocol {
     func onFetchAdvertisingSuccess(banner: AdvertisingModel) {
         print("View receives the response from Presenter and updates itself.")
         DispatchQueue.main.async {
-            self.banners = banner.list
+            self.banners = banner
             self.collectionView.reloadData()
         }
     }
@@ -79,19 +80,29 @@ extension AdvertisingScreenViewController: ViewOutputAdvertisingScreenProtocol {
 
 extension AdvertisingScreenViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return banners.count
+        return banners?.list.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let banner = banners[indexPath.item]
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CodeCell.reuseIdentifier, for: indexPath) as? CodeCell else {
-            fatalError("Could not instantiate AdvertViewCell.")
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CodeCell.reuseIdentifier, for: indexPath) as? CodeCell,
+              let banner = banners?.list[indexPath.item] else {
+            fatalError("Could not instantiate CodeCell.")
         }
         cell.backgroundColor = .systemGray2
         cell.layer.cornerRadius = 5
         cell.configure(with: banner)
 
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AdvertisingHeaderReusableView.reuseIdentifier, for: indexPath) as? AdvertisingHeaderReusableView else {
+            fatalError("Could not instantiate Header.")
+        }
+        headerView.backgroundColor = .white
+        headerView.configure(with: banners)
+        return headerView
     }
     
 //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

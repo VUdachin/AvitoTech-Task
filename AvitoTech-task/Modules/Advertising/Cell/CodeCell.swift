@@ -84,7 +84,7 @@ class CodeCell: UICollectionViewCell {
         let inset: CGFloat = 12
         
         NSLayoutConstraint.activate([
-
+            
             iconImageView.heightAnchor.constraint(equalToConstant: 52),
             iconImageView.widthAnchor.constraint(equalToConstant: 52),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
