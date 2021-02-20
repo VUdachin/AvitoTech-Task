@@ -15,7 +15,7 @@ class AdvertisingHeaderReusableView: UICollectionReusableView {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.addTarget(self, action: #selector(closeButtonTouched), for: .touchUpInside)
+        button.isUserInteractionEnabled = false
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

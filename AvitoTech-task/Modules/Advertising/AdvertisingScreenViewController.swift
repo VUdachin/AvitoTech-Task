@@ -25,9 +25,7 @@ class AdvertisingScreenViewController: UIViewController {
     // MARK: - Public Properties
     var presenter: ViewInputAdvertisingScreenProtocol?
     
-    var collectionView: UICollectionView!
-    
-    var selectedIndex: IndexPath = IndexPath(item: 0, section: 0)
+    private var collectionView: UICollectionView!
     
     // MARK: - Private Properties
     private var banners: AdvertisingModel?
@@ -46,7 +44,6 @@ class AdvertisingScreenViewController: UIViewController {
     @objc func selectedAlert() {
         let alert = UIAlertController(title: "Вы выбрали", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Готово", style: .cancel, handler: nil))
-        
         self.present(alert, animated: true)
     }
     
@@ -61,7 +58,6 @@ class AdvertisingScreenViewController: UIViewController {
             collectionView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
             collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            //collectionView.bottomAnchor.constraint(equalTo: closeButton.topAnchor),
             
             closeButton.heightAnchor.constraint(equalToConstant: 60),
             closeButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 15),
@@ -128,12 +124,6 @@ extension AdvertisingScreenViewController: UICollectionViewDataSource, UICollect
         cell.layer.cornerRadius = 5
         cell.configure(with: banner)
         
-        if selectedIndex.row == indexPath.row {
-            cell.changeCheckmarkVisibility(isHidden: true)
-        } else {
-            cell.changeCheckmarkVisibility(isHidden: false)
-        }
-
         return cell
     }
     
@@ -147,8 +137,10 @@ extension AdvertisingScreenViewController: UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedIndex = indexPath
-        collectionView.reloadData()
+        if let cell = collectionView.cellForItem(at: indexPath) as? CodeCell {
+            cell.changeState()
+            closeButton.setTitle("Продолжить покупку", for: .normal)
+            //closeButton.setTitle(banners?.actionTitle, for: .normal)
+        }
     }
-    
 }

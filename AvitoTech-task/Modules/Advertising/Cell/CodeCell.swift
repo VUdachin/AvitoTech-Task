@@ -20,9 +20,10 @@ class CodeCell: UICollectionViewCell {
     
     private lazy var checkmarkImageView: UIImageView = {
         let checkmark = UIImageView()
-        checkmark.clipsToBounds = true
+        checkmark.contentMode = .scaleAspectFill
         checkmark.layer.cornerRadius = 15
-        checkmark.image = UIImage(named: "checkmark")
+        checkmark.image = UIImage(systemName: "checkmark.circle.fill")
+        checkmark.isHidden = true
         checkmark.translatesAutoresizingMaskIntoConstraints = false
         return checkmark
     }()
@@ -59,18 +60,21 @@ class CodeCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+
     func configure(with ad: Banner) {
         priceLabel.text = ad.price
         titleLabel.text = ad.title
         descriptionLabel.text = ad.description
         iconImageView.downloadFrom(imageUrl: ad.icon.the52X52)
-        checkmarkImageView.isHidden = !ad.isSelected
     }
     
-    func changeCheckmarkVisibility(isHidden: Bool) {
-            checkmarkImageView.isHidden = isHidden
+    func changeState() {
+        if checkmarkImageView.isHidden {
+            checkmarkImageView.isHidden = false
+        } else {
+            checkmarkImageView.isHidden = true
         }
+    }
     
     private func setupSubViews() {
         contentView.backgroundColor = .systemGray6
@@ -112,7 +116,7 @@ class CodeCell: UICollectionViewCell {
             priceLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: inset),
             
             contentView.bottomAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: inset),
-            contentView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - inset)
+            contentView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 20)
         ])
     }
 
