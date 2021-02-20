@@ -64,12 +64,16 @@ class CodeCell: UICollectionViewCell {
         priceLabel.text = ad.price
         titleLabel.text = ad.title
         descriptionLabel.text = ad.description
-        checkmarkImageView.isHidden = !self.isSelected // dorabotat
         iconImageView.downloadFrom(imageUrl: ad.icon.the52X52)
+        checkmarkImageView.isHidden = !ad.isSelected
     }
     
+    func changeCheckmarkVisibility(isHidden: Bool) {
+            checkmarkImageView.isHidden = isHidden
+        }
+    
     private func setupSubViews() {
-        contentView.backgroundColor = .systemGray2
+        contentView.backgroundColor = .systemGray6
         contentView.layer.cornerRadius = 8
         contentView.addSubview(iconImageView)
         contentView.addSubview(checkmarkImageView)
@@ -90,10 +94,10 @@ class CodeCell: UICollectionViewCell {
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
             iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset),
             
-            checkmarkImageView.heightAnchor.constraint(equalToConstant: 20),
-            checkmarkImageView.widthAnchor.constraint(equalToConstant: 20),
+            checkmarkImageView.heightAnchor.constraint(equalToConstant: 25),
+            checkmarkImageView.widthAnchor.constraint(equalToConstant: 25),
             checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
-            checkmarkImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset),
+            checkmarkImageView.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor),
             
             titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 8),
             titleLabel.trailingAnchor.constraint(equalTo: checkmarkImageView.leadingAnchor, constant: -8),

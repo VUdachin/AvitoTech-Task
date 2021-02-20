@@ -10,13 +10,24 @@ import UIKit
 
 class AdvertisingScreenViewController: UIViewController {
  
+    private lazy var closeButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 6
+        button.backgroundColor = .systemBlue
+        button.setTitleColor(.white, for: .normal)
+        button.layoutIfNeeded()
+        button.addTarget(self, action: #selector(selectedAlert), for: .touchUpInside)
+        
+        return button
+    }()
+    
     // MARK: - Public Properties
     var presenter: ViewInputAdvertisingScreenProtocol?
     
     var collectionView: UICollectionView!
     
-    var isLastSelected: Bool?
-    var isSelected: Bool?
+    var selectedIndex: IndexPath = IndexPath(item: 0, section: 0)
     
     // MARK: - Private Properties
     private var banners: AdvertisingModel?
@@ -25,33 +36,56 @@ class AdvertisingScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setupCollectionView()
+        setupUI()
         presenter?.setupView()
     }
 
 
     // MARK: - Private Methods
-    func setupCollectionView() {
+    
+    @objc func selectedAlert() {
+        let alert = UIAlertController(title: "Вы выбрали", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Готово", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
+    }
+    
+    
+    func setupUI() {
+        let safeArea = view.safeAreaLayoutGuide
+        setupCollectionView()
+        self.view.addSubview(collectionView)
+        self.view.addSubview(closeButton)
+        
+        NSLayoutConstraint.activate([
+            collectionView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
+            collectionView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
+            collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            //collectionView.bottomAnchor.constraint(equalTo: closeButton.topAnchor),
+            
+            closeButton.heightAnchor.constraint(equalToConstant: 60),
+            closeButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 15),
+            closeButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 15),
+            closeButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -15),
+            
+            view.bottomAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 15)
+        ])
+    }
+    
+    private func setupCollectionView() {
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        layout.estimatedItemSize = CGSize(width: UIScreen.main.bounds.width - 20, height: 10)
-        layout.headerReferenceSize = CGSize(width: (UIScreen.main.bounds.size.width), height: 150)
+        layout.estimatedItemSize = CGSize(width: UIScreen.main.bounds.size.width - 30, height: 10)
+        layout.headerReferenceSize = CGSize(width: (UIScreen.main.bounds.size.width - 30), height: 150)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .white
         collectionView.showsVerticalScrollIndicator = false
+        collectionView.alwaysBounceVertical = true
         collectionView.register(CodeCell.self, forCellWithReuseIdentifier: CodeCell.reuseIdentifier)
         collectionView.register(AdvertisingHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: AdvertisingHeaderReusableView.reuseIdentifier)
-        self.view.addSubview(collectionView)
-        
-        collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        collectionView.alwaysBounceVertical = true
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -67,6 +101,7 @@ extension AdvertisingScreenViewController: ViewOutputAdvertisingScreenProtocol {
         print("View receives the response from Presenter and updates itself.")
         DispatchQueue.main.async {
             self.banners = banner
+            self.closeButton.setTitle(self.banners?.actionTitle, for: .normal)
             self.collectionView.reloadData()
         }
     }
@@ -92,6 +127,12 @@ extension AdvertisingScreenViewController: UICollectionViewDataSource, UICollect
         cell.backgroundColor = .systemGray2
         cell.layer.cornerRadius = 5
         cell.configure(with: banner)
+        
+        if selectedIndex.row == indexPath.row {
+            cell.changeCheckmarkVisibility(isHidden: true)
+        } else {
+            cell.changeCheckmarkVisibility(isHidden: false)
+        }
 
         return cell
     }
@@ -105,14 +146,9 @@ extension AdvertisingScreenViewController: UICollectionViewDataSource, UICollect
         return headerView
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AdCell", for: indexPath) as? AdCell else {
-//                    fatalError("Could not instantiate AdvertViewCell.")
-//                }
-//        let banner = banners[indexPath.item].isSelected
-//        if banner {
-//
-//        }
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedIndex = indexPath
+        collectionView.reloadData()
+    }
     
 }
