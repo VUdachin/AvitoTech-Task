@@ -11,6 +11,7 @@ class CodeCell: UICollectionViewCell {
     
     static var reuseIdentifier = "CodeCell"
     
+    // MARK: - Create UI
     private lazy var iconImageView: UIImageView = {
         let icon = UIImageView()
         icon.layer.cornerRadius = 20
@@ -18,7 +19,7 @@ class CodeCell: UICollectionViewCell {
         return icon
     }()
     
-    private lazy var checkmarkImageView: UIImageView = {
+    lazy var checkmarkImageView: UIImageView = {
         let checkmark = UIImageView()
         checkmark.contentMode = .scaleAspectFill
         checkmark.layer.cornerRadius = 15
@@ -51,6 +52,7 @@ class CodeCell: UICollectionViewCell {
         return label
     }()
     
+    // MARK: - init
     override init(frame: CGRect) {
             super.init(frame: frame)
             setupCell()
@@ -60,7 +62,7 @@ class CodeCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-
+    // MARK: - Public Methods
     func configure(with ad: Banner) {
         priceLabel.text = ad.price
         titleLabel.text = ad.title
@@ -76,9 +78,10 @@ class CodeCell: UICollectionViewCell {
         }
     }
     
+    // MARK: - Setup UI
     private func setupSubViews() {
         contentView.backgroundColor = .systemGray6
-        contentView.layer.cornerRadius = 8
+        contentView.layer.cornerRadius = 25
         contentView.addSubview(iconImageView)
         contentView.addSubview(checkmarkImageView)
         contentView.addSubview(titleLabel)
@@ -93,8 +96,8 @@ class CodeCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             
-            iconImageView.heightAnchor.constraint(equalToConstant: 52),
-            iconImageView.widthAnchor.constraint(equalToConstant: 52),
+            iconImageView.heightAnchor.constraint(equalToConstant: 55),
+            iconImageView.widthAnchor.constraint(equalToConstant: 55),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
             iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset),
             

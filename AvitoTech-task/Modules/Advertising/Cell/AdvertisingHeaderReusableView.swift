@@ -10,11 +10,12 @@ import UIKit
 class AdvertisingHeaderReusableView: UICollectionReusableView {
     
     static var reuseIdentifier = "AdvertisingHeader"
-        
+       
+    // MARK: - Create UI
     private lazy var closebutton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.tintColor = .black
         button.isUserInteractionEnabled = false
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -28,11 +29,7 @@ class AdvertisingHeaderReusableView: UICollectionReusableView {
         return label
     }()
     
-    @objc func closeButtonTouched() {
-        print("It's touched")
-    }
-    
-    
+    // MARK: - init
     override init(frame: CGRect) {
             super.init(frame: frame)
             setupHeaderView()
@@ -42,11 +39,12 @@ class AdvertisingHeaderReusableView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public Methods
     func configure(with ad: AdvertisingModel?) {
         adViewLabel.text = ad?.title
     }
     
-    
+    // MARK: - Setup UI
     private func setupSubviews() {
         addSubview(closebutton)
         addSubview(adViewLabel)
@@ -67,7 +65,7 @@ class AdvertisingHeaderReusableView: UICollectionReusableView {
             adViewLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: inset),
             adViewLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: inset),
             adViewLabel.topAnchor.constraint(equalTo: closebutton.topAnchor, constant: 25),
-            adViewLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: inset)
+            adViewLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 20)
         ])
     }
 }

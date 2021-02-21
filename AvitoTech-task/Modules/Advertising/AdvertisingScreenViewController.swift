@@ -9,7 +9,8 @@
 import UIKit
 
 class AdvertisingScreenViewController: UIViewController {
- 
+    
+    // MARK: - Create UI
     private lazy var closeButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -18,17 +19,16 @@ class AdvertisingScreenViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.layoutIfNeeded()
         button.addTarget(self, action: #selector(selectedAlert), for: .touchUpInside)
-        
         return button
     }()
     
     // MARK: - Public Properties
     var presenter: ViewInputAdvertisingScreenProtocol?
     
-    private var collectionView: UICollectionView!
-    
     // MARK: - Private Properties
     private var banners: AdvertisingModel?
+    private var collectionView: UICollectionView!
+    private var selectedItemCount = 0
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -40,15 +40,13 @@ class AdvertisingScreenViewController: UIViewController {
 
 
     // MARK: - Private Methods
-    
-    @objc func selectedAlert() {
-        let alert = UIAlertController(title: "Вы выбрали", message: nil, preferredStyle: .alert)
+    @objc private func selectedAlert() {
+        let alert = UIAlertController(title: "Спасибо за покупку!", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Готово", style: .cancel, handler: nil))
         self.present(alert, animated: true)
     }
     
-    
-    func setupUI() {
+    private func setupUI() {
         let safeArea = view.safeAreaLayoutGuide
         setupCollectionView()
         self.view.addSubview(collectionView)
@@ -69,15 +67,14 @@ class AdvertisingScreenViewController: UIViewController {
     }
     
     private func setupCollectionView() {
-        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.estimatedItemSize = CGSize(width: UIScreen.main.bounds.size.width - 30, height: 10)
-        layout.headerReferenceSize = CGSize(width: (UIScreen.main.bounds.size.width - 30), height: 150)
+        layout.headerReferenceSize = CGSize(width: (UIScreen.main.bounds.size.width - 30), height: 160)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
         collectionView.alwaysBounceVertical = true
         collectionView.register(CodeCell.self, forCellWithReuseIdentifier: CodeCell.reuseIdentifier)
@@ -85,10 +82,7 @@ class AdvertisingScreenViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
     }
-    
-    // MARK: - UI Actions
     
 }
 
@@ -109,18 +103,18 @@ extension AdvertisingScreenViewController: ViewOutputAdvertisingScreenProtocol {
     
 }
 
-extension AdvertisingScreenViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    // MARK: - UICollectionViewDataSource
+extension AdvertisingScreenViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return banners?.list.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CodeCell.reuseIdentifier, for: indexPath) as? CodeCell,
               let banner = banners?.list[indexPath.item] else {
             fatalError("Could not instantiate CodeCell.")
         }
-        cell.backgroundColor = .systemGray2
+        cell.backgroundColor = .white
         cell.layer.cornerRadius = 5
         cell.configure(with: banner)
         
@@ -136,11 +130,20 @@ extension AdvertisingScreenViewController: UICollectionViewDataSource, UICollect
         return headerView
     }
     
+    // MARK: - UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CodeCell {
+            if cell.checkmarkImageView.isHidden {
+                selectedItemCount += 1
+                closeButton.setTitle("Продолжить покупку", for: .normal)
+            } else {
+                selectedItemCount -= 1
+                if selectedItemCount == 0 {
+                    closeButton.setTitle(banners?.actionTitle, for: .normal)
+                }
+            }
             cell.changeState()
-            closeButton.setTitle("Продолжить покупку", for: .normal)
-            //closeButton.setTitle(banners?.actionTitle, for: .normal)
         }
     }
+    
 }
